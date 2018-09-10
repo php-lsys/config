@@ -1,7 +1,7 @@
 # 配置层  
 
-[![Build Status](https://travis-ci.com/lsys/config.svg?branch=master)](https://travis-ci.com/lsys/config)
-[![Coverage Status](https://coveralls.io/repos/github/lsys/config/badge.svg?branch=master)](https://coveralls.io/github/lsys/config?branch=master)
+[![Build Status](https://travis-ci.com/php-lsys/config.svg?branch=master)](https://travis-ci.com/php-lsys/config)
+[![Coverage Status](https://coveralls.io/repos/github/php-lsys/config/badge.svg?branch=master)](https://coveralls.io/github/lsys/config?branch=master)
 
 > 封装此类库是为了实现功能与配置的分离
 > 接口参考yaf的config接口
