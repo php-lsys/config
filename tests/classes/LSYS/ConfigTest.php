@@ -19,7 +19,7 @@ final class ConfigTest extends TestCase
        $this->assertEquals($file->get("test3",'def'), "def");
        $this->assertEquals($file->name(), "aa.a");
        $this->assertTrue($file->readonly());
-       $this->assertArrayHasKey("test",$file->as_array());
+       $this->assertArrayHasKey("test",$file->asArray());
        $_file=unserialize(serialize($file));
        $this->assertTrue($_file instanceof File);
        $this->assertTrue($_file->loaded());
@@ -51,7 +51,7 @@ final class ConfigTest extends TestCase
         $this->assertFalse($file->exist("dispatcher1"));
         $this->assertEquals($file->name(), "test.application");
         $this->assertTrue($file->readonly());
-        $this->assertArrayHasKey("dispatcher",$file->as_array());
+        $this->assertArrayHasKey("dispatcher",$file->asArray());
     }
     public function testArr()
     {
@@ -63,7 +63,7 @@ final class ConfigTest extends TestCase
         $this->assertTrue($file->exist("test"));
         $this->assertFalse($file->exist("test1"));
         $this->assertFalse($file->readonly());
-        $this->assertArrayHasKey("test",$file->as_array());
+        $this->assertArrayHasKey("test",$file->asArray());
     }
     public function testsub()
     {
@@ -75,7 +75,7 @@ final class ConfigTest extends TestCase
         $this->assertTrue($file->exist("test"));
         $this->assertFalse($file->exist("test1"));
         $this->assertFalse($file->readonly());
-        $this->assertArrayHasKey("test",$file->as_array());
+        $this->assertArrayHasKey("test",$file->asArray());
         $_file=unserialize(serialize($file));
         $this->assertTrue($_file instanceof SubSet);
     }

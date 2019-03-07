@@ -46,5 +46,5 @@ interface Config{
 	 * to config is array
 	 * @return array
 	 */
-	public function as_array ();
+	public function asArray();
 }

@@ -37,7 +37,7 @@ class SubSet implements Config,\Serializable{
 	public function readonly (){
 		return $this->_config->readonly();
 	}
-	public function as_array (){
+	public function asArray(){
 		$arr=$this->_config->get($this->_key);
 		if (is_array($arr))return $arr;
 		return array();

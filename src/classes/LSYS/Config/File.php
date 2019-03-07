@@ -123,9 +123,9 @@ class File implements Config,\Serializable{
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see \LSYS\Config::as_array()
+	 * @see \LSYS\Config::asArray()
 	 */
-	public function as_array (){
+	public function asArray(){
 		return $this->_node;
 	}
 	/**
