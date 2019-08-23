@@ -39,9 +39,9 @@ class FileRW extends File implements Config{
 	public function set ($key,$value = NULL){
 		if(!isset(File::$_cahe[$this->_file])){
 			$file=array_shift(explode(".",$this->_name));
-			throw new Exception(__("config :file not exist",array("file"=>$file)));//文件不支持写入操作
+			throw new Exception(__("config :file not exist",array(":file"=>$file)));//文件不支持写入操作
 		}
-		if (!$this->_is_write) throw new Exception(__("file :file can't be write",array("file"=>$this->_file)));//文件不支持写入操作
+		if (!$this->_is_write) throw new Exception(__("file :file can't be write",array(":file"=>$this->_file)));//文件不支持写入操作
 		$keys=explode(".",$key);
 		$config=&$this->_node;
 		foreach ($keys as $v){
@@ -89,6 +89,6 @@ class FileRW extends File implements Config{
 		$data=ob_get_contents();
 		ob_end_clean();
 		if(@file_put_contents($filename, $data))return true;
-		throw new Exception(__("can't write config to :file",array('file'=>$filename)));
+		throw new Exception(__("can't write config to :file",array(':file'=>$filename)));
 	}
 }

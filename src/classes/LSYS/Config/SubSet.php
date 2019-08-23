@@ -48,7 +48,7 @@ class SubSet implements Config,\Serializable{
 	 */
 	public function serialize () {
 	    if (!$this->_config instanceof \Serializable){
-			throw new Exception(__("the config can't be serializable [:class]",array("class"=>get_class($this->_config))));
+			throw new Exception(__("the config can't be serializable [:class]",array(":class"=>get_class($this->_config))));
 		}
 		$data=array($this->_key,serialize($this->_config));
 		return json_encode($data);
