@@ -2,14 +2,19 @@
 	"name" : "lsys/config",
 	"type" : "library",
 	"license": "Apache-2.0",
-
 	"description" : "lsys module config",
 	"autoload" : {
 		"psr-4" : {
-			"LSYS\\" : "src/classes/LSYS/"
+			"LSYS\\" : [
+				"src/common/classes/LSYS/"
+			],
+			"LSYS\\Config\\" : [
+				"src/driver-file/classes/LSYS/Config/",
+				"src/driver-memory/classes/LSYS/Config/"
+			]
 		},
 		"files" : [
-			"src/Bootstarp.php"
+			"src/common/Bootstarp.php"
 		]
 	},
 	"require" : {
