@@ -9,6 +9,7 @@
 				"src/common/classes/LSYS/"
 			],
 			"LSYS\\Config\\" : [
+				"src/common/classes/LSYS/Config/",
 				"src/driver-file/classes/LSYS/Config/",
 				"src/driver-memory/classes/LSYS/Config/"
 			]
