@@ -4,10 +4,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/php-lsys/config/badge.svg?branch=master)](https://coveralls.io/github/php-lsys/config?branch=master)
 
 > 封装此类库是为了实现功能与配置的分离
-> 接口参考yaf的config接口
 
 
 使用示例:
+
 ```
 //-----------------------通过文件------------------------
 //配置文件 :dome/config/aa.php
@@ -15,6 +15,7 @@ use LSYS\Config\File;
 $c=new File("aa.a");
 var_dump($c->get('fasd'));
 ```
+
 ```
 //-----------------------可写的文件------------------------
 //配置文件 :dome/config/aa.php
@@ -23,6 +24,7 @@ $c = new FileRW("aa");
 $c->set("a",array("fasd"=>"fasdf","faasdsd"=>"fadafdssdf"));
 var_dump($c->get("a"));
 ```
+
 ```
 //-----------------------INI文件------------------------
 //配置文件 :dome/config/application.ini
