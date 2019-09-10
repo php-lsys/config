@@ -7,7 +7,9 @@
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-         	<directory suffix=".php">../src/classes</directory>
+         	<directory suffix=".php">../src/common/classes</directory>
+         	<directory suffix=".php">../src/driver-file/classes</directory>
+         	<directory suffix=".php">../src/driver-memory/classes</directory>
         </whitelist>
     </filter>
     <logging>
