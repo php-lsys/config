@@ -15,29 +15,29 @@ class SubSet implements Config,\Serializable{
 	 * php file config
 	 * @param string $name
 	 */
-	public function __construct (Config $config,$key){
+	public function __construct (Config $config,string $key){
 		$this->_config=$config;
 		$this->_key=$key;
 	}
-	public function name(){
+	public function name():string{
 		return $this->_config->name().".".$this->_key;
 	}
-	public function loaded(){
+	public function loaded():bool{
 		return $this->_config->exist($this->_key);
 	}
-	public function get ($key,$default=NULL){
+	public function get (string $key,$default=NULL){
 		return $this->_config->get($this->_key.".".$key,$default);
 	}
-	public function set ($key,$value = NULL){
+	public function set (string $key,$value = NULL):bool{
 		return $this->_config->set($this->_key.".".$key,$value);
 	}
-	public function exist($key){
+	public function exist(string $key):bool{
 		return $this->_config->exist($this->_key.".".$key);
 	}
-	public function readonly (){
+	public function readonly ():bool{
 		return $this->_config->readonly();
 	}
-	public function asArray(){
+	public function asArray():array{
 		$arr=$this->_config->get($this->_key);
 		if (is_array($arr))return $arr;
 		return array();

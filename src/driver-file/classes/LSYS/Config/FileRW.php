@@ -12,7 +12,7 @@ class FileRW extends File implements Config{
 	protected $_is_write=false;
 	protected $_is_change=false;
 	protected static $_file_ref=array();
-	public function __construct($name){
+	public function __construct(string $name){
 		$this->_load=false;
 		$this->_name=$name;
 		$group=$this->_init();
@@ -36,7 +36,7 @@ class FileRW extends File implements Config{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::set()
 	 */
-	public function set ($key,$value = NULL){
+	public function set (string $key,$value = NULL):bool{
 		if(!isset(File::$_cahe[$this->_file])){
 			$file=array_shift(explode(".",$this->_name));
 			throw new Exception(__("config :file not exist",array(":file"=>$file)));//文件不支持写入操作
@@ -67,7 +67,7 @@ class FileRW extends File implements Config{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::readonly()
 	 */
-	public function readonly (){
+	public function readonly ():bool{
 		return !$this->_is_write;
 	}
 	/**
@@ -75,7 +75,7 @@ class FileRW extends File implements Config{
 	 * @param string $filename
 	 * @param array $data
 	 */	
-	protected function _write($filename,$data){
+	protected function _write(string $filename,$data){
 		ob_start();
 		echo "<?php
 /**

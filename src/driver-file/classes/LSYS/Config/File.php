@@ -15,7 +15,7 @@ class File implements Config,\Serializable{
 	 * set config scan dir
 	 * @param array $dirs
 	 */
-	public static function dirs(array $dirs,$overwrite=false){
+	public static function dirs(array $dirs,bool $overwrite=false):void{
 		foreach ($dirs as $k=>&$v){
 			if ($v==null)unset($dirs[$k]);
 			$v=strval(rtrim($v,'\\/').DIRECTORY_SEPARATOR);
@@ -33,7 +33,7 @@ class File implements Config,\Serializable{
 	 * php file config
 	 * @param string $name
 	 */
-	public function __construct ($name,$dir=NULL){
+	public function __construct (string $name,string $dir=NULL){
 		$this->_load=false;
 		$this->_name=$name;
 		$this->_dir=$dir;
@@ -81,21 +81,21 @@ class File implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::loaded()
 	 */
-	public function loaded(){
+	public function loaded():bool{
 		return $this->_load;
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::name()
 	 */
-	public function name(){
+	public function name():string{
 		return $this->_name;
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::get()
 	 */
-	public function get ($key,$default=NULL){
+	public function get (string $key,$default=NULL){
 		$group= explode('.', $key);
 		$t=$this->_node;
 		while (count($group)){
@@ -110,7 +110,7 @@ class File implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::get()
 	 */
-	public function exist($key){
+	public function exist(string $key):bool{
 		$group= explode('.', $key);
 		$t=$this->_node;
 		while (count($group)){
@@ -125,21 +125,21 @@ class File implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::asArray()
 	 */
-	public function asArray(){
-		return $this->_node;
+	public function asArray():array{
+	    return is_array($this->_node)?$this->_node:[];
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::set()
 	 */
-	public function set ($key,$value = NULL){
+	public function set (string $key,$value = NULL):bool{
 		throw new Exception(__("file config not support set method"));//文件配置不支持设置操作
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::readonly()
 	 */
-	public function readonly (){
+	public function readonly ():bool{
 		return true;
 	}
 	/**
@@ -160,7 +160,7 @@ class File implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \Serializable::serialize()
 	 */
-	public function serialize () {
+	public function serialize (){
 		return $this->_name;
 	}
 	/**

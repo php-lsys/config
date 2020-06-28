@@ -14,7 +14,7 @@ class Arr implements Config,\Serializable{
 	 * php file config
 	 * @param string $name
 	 */
-	public function __construct (array $array,$name=null){
+	public function __construct (array $array,string $name=null){
 		$this->_node=$array;
 		$this->_name=$name?$name:uniqid();
 	}
@@ -22,21 +22,21 @@ class Arr implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::loaded()
 	 */
-	public function loaded(){
+	public function loaded():bool{
 		return count($this->_node)>0;
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::name()
 	 */
-	public function name(){
+	public function name():string{
 		return $this->_name;
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::get()
 	 */
-	public function get($key,$default=NULL){
+	public function get(string $key,$default=NULL){
 		$group= explode('.', $key);
 		$t=$this->_node;
 		while (count($group)){
@@ -51,14 +51,14 @@ class Arr implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::asArray()
 	 */
-	public function asArray(){
-		return $this->_node;
+	public function asArray():array{
+	    return is_array($this->_node)?$this->_node:[];
 	}
 	/**
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::set()
 	 */
-	public function set ($key,$value = NULL){
+	public function set (string $key,$value = NULL):bool{
 		$keys=explode(".",$key);
 		$config=&$this->_node;
 		foreach ($keys as $v){
@@ -74,7 +74,7 @@ class Arr implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::exist()
 	 */
-	public function exist($key){
+	public function exist($key):bool{
 		$group= explode('.', $key);
 		$t=$this->_node;
 		while (count($group)){
@@ -89,7 +89,7 @@ class Arr implements Config,\Serializable{
 	 * {@inheritDoc}
 	 * @see \LSYS\Config::readonly()
 	 */
-	public function readonly (){
+	public function readonly ():bool{
 		return false;
 	}
 	/**
